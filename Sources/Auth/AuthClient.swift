@@ -727,7 +727,7 @@ public actor AuthClient {
     } catch {
       // ignore 404s since user might not exist anymore
       // ignore 401s since an invalid or expired JWT should sign out the current session
-      let ignoredCodes = Set([404, 401])
+      let ignoredCodes = Set([404, 401, 403])
 
       if case let AuthError.api(apiError) = error, let code = apiError.code,
          !ignoredCodes.contains(code)
